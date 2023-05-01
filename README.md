@@ -3,40 +3,49 @@
 
 **Skriv din rapport här!**
 
-_Du kan ta bort all text som finns sedan tidigare_.
 
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+- Jag har byt min app namn till MYApp i values- strings.xml.
+- Jag har aktivera internetåtkomst i AndroidManifest.xml.
+- Jag har ändrat TextView till WebView i activity_main.xml. 
+- Skapat den WebView till my_webview.
+- Och ändrat layout width och height till 0dp. På så sätt kommer skärmen att täcka hela utrymmet under menyraden.
+- Jag har skapat en privat myWebView. OCh instansiera det.
+- Skapa en ny webviewclient till mywebview.
+- Jag har Aktivera Javascript-körning i  WebViewClient.
+- Jag har Lägg till en HTML-sida som en tillgång. Heta webb.html. Höger klicka och välja new-> folder-> assets folder. Sen höger klicka assets folder och välja new->file och skriva i .html
+- Jag har implementera 'showExternalWebPage()' och 'showInternalWebPage()'.
+- Jag har Call 'showExternalWebPage()' och 'showInternalWebPage()'. I mainactivity.java
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+<string name="app_name">MYApp</string>// Byta namn
+
+<uses-permission android:name="android.permission.INTERNET" /> //aktivera internetåtkomst//
+
+<WebView
+        android:id="@+id/my_webview"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+        
+private WebView myWebView; //skapa en privat webview//
+ myWebView = findViewById(R.id.my_webview); //instansiera med findviewbyid//
+        myWebView.setWebViewClient(new WebViewClient()); //Skapa en ny WebViewClient att bifoga till WebView//
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);//Aktivera Javascript//
+        
+ public void showExternalWebPage() {myWebView.loadUrl("https://his.se"); } //implementera showExternalWebPage()//
+ public void showInternalWebPage(){myWebView.loadUrl("file:///android_asset/webb.html"); }//implementera showInternalWebPage()//
+ 
+ if (id == R.id.action_external_web) {
+            showExternalWebPage(); // call showExternalWebPage//
+            Log.d("==>","Will display external web page");
+            return true;
+        }
+
+        if (id == R.id.action_internal_web) {
+            showInternalWebPage(); // call showInternalWebPage//
+            Log.d("==>","Will display internal web page");
+            return true;
+        }
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
 
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
