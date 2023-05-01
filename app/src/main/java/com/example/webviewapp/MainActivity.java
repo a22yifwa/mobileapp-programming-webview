@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
-
+   private WebView myWebView;
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
     }
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public void showInternalWebPage(){
         // TODO: Add your code for showing internal web page here
     }
-    WebView myWebView;
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
